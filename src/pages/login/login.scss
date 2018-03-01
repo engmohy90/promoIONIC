@@ -1,3 +1,53 @@
-page-login{::placeholder {
-    text-align: right;
-}}
+page-login {
+    ::placeholder {
+        text-align: right;
+    }
+
+    .fixed-content {
+        background: linear-gradient( rgba(11, 38, 83, 0.5)), url('../../assets/imgs/02_SignIn.png') center top no-repeat fixed;
+        background-size: cover;
+    }
+
+    .scroll-content {
+        padding: 0px !important;
+
+        .LogoLogin {
+            width: 130px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 110px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .login-box {
+            width: 100%;
+            margin-top: 80px;
+
+            .list-ios[inset] {
+                margin: 0px !important;
+
+                .item {
+                    border-bottom: 1px solid #fff;
+                    background: none !important;
+                    color: #fff;
+                    font-size: 20px;
+                    text-align: center;
+
+                    ::placeholder {
+                        text-align: center !important;
+                        color: #fff;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            button.submit-btn {
+                opacity: 1 !important;
+                border-radius: 35px;
+            }
+        }
+    }
+}
