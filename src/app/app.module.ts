@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import {MainPage} from "../pages/main/main";
 import {SharePage} from "../pages/share/share";
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,11 @@ import {SharePage} from "../pages/share/share";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+     IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['sqlite']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
