@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {SharePage} from "../share/share";
 import {ContactFieldType, ContactFindOptions, Contacts} from '@ionic-native/contacts';
 
@@ -17,19 +17,27 @@ import {ContactFieldType, ContactFindOptions, Contacts} from '@ionic-native/cont
 export class MainPage {
   searchQuery: string = '';
   items: any[];
+   contactsfound = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private contacts: Contacts) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contacts: Contacts,public loadingCtrl: LoadingController,) {
     this.initializeItems();
   }
 
   initializeItems() {
+  alert('initialze items');
+  let loading = this.loadingCtrl.create({
+  spinner: 'bubbles',
+  content: 'Loading Please Wait...',
 
+});
+  loading.present();
     // find all contacts
     const options = new ContactFindOptions();
     options.filter = "";
     options.multiple = true;
     let filter: ContactFieldType[] = ["displayName", "emails", "phoneNumbers", 'photos'];
     this.contacts.find(filter, options).then(contacts => {
+      loading.dismiss();
       this.items = contacts
       alert(contacts[0].displayName)
     });
@@ -55,6 +63,29 @@ export class MainPage {
       animate: true,
       direction: 'forward'
     });
+
+  }
+
+  loadContacts() {
+    this.initializeItems();
+  }
+
+   findContacts(ev: any) {
+    let fields: ContactFieldType[] = ['displayName'];
+
+    const options = new ContactFindOptions();
+    options.filter = "Mohy";
+    options.multiple = true;
+    options.hasPhoneNumber = true;
+
+    this.contacts.find(fields, options).then((contacts) => {
+      this.contactsfound = contacts;
+      alert(JSON.stringify(contacts[0]));
+    });
+
+    if (this.contactsfound.length == 0) {
+      this.contactsfound.push({displayName: 'No Contacts found'});
+    }
 
   }
 }

@@ -27,8 +27,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(form: NgForm) {
-
+  ionViewWillEnter(){
     // Or to get a key/value pair
     this.storage.get('auth').then((val) => {
       if (val == 'yes') {
@@ -38,14 +37,17 @@ export class LoginPage implements OnInit {
         });
       }
     });
+  }
+
+  login(form: NgForm) {
     if (this.registerCredentials.username == "mohy" && this.registerCredentials.password == "mohy") {
       this.registerCredentials.username == "mohy";
       this.storage.set('auth', 'yes');
-      this.storage.get('auth').then((val) => {
-        if (val == 'yes') {
-          alert(val);
-        }
-      });
+      // this.storage.get('auth').then((val) => {
+      //   if (val == 'yes') {
+      //     alert(val);
+      //   }
+      // });
 
       this.navCtrl.setRoot(MainPage, {}, {
         animate: true,
