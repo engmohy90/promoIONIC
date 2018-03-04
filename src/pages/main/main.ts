@@ -17,30 +17,47 @@ import {ContactFieldType, ContactFindOptions, Contacts} from '@ionic-native/cont
 export class MainPage {
   searchQuery: string = '';
   items: any[];
-   contactsfound = [];
+  contactsfound = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private contacts: Contacts,public loadingCtrl: LoadingController,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contacts: Contacts, public loadingCtrl: LoadingController,) {
+    // this.initializeItems();
+  }
+
+  ionViewWillEnter(){
     this.initializeItems();
   }
 
   initializeItems() {
-  alert('initialze items');
-  let loading = this.loadingCtrl.create({
-  spinner: 'bubbles',
-  content: 'Loading Please Wait...',
+    let fields: ContactFieldType[] = ['displayName'];
 
-});
-  loading.present();
-    // find all contacts
     const options = new ContactFindOptions();
     options.filter = "";
     options.multiple = true;
-    let filter: ContactFieldType[] = ["displayName", "emails", "phoneNumbers", 'photos'];
-    this.contacts.find(filter, options).then(contacts => {
-      loading.dismiss();
-      this.items = contacts
-      alert(contacts[0].displayName)
+    options.hasPhoneNumber = true;
+
+    this.contacts.find(fields, options).then((contacts) => {
+      this.items = contacts;
+      alert(JSON.stringify(contacts[0]));
     });
+  }
+
+  findContacts(ev: any) {
+    let fields: ContactFieldType[] = ['displayName'];
+
+    const options = new ContactFindOptions();
+    options.filter = "Mohy";
+    options.multiple = true;
+    options.hasPhoneNumber = true;
+
+    this.contacts.find(fields, options).then((contacts) => {
+      this.contactsfound = contacts;
+      alert(JSON.stringify(contacts[0]));
+    });
+
+    if (this.contactsfound.length == 0) {
+      this.contactsfound.push({displayName: 'No Contacts found'});
+    }
+
   }
 
   getItems(ev: any) {
@@ -70,22 +87,4 @@ export class MainPage {
     this.initializeItems();
   }
 
-   findContacts(ev: any) {
-    let fields: ContactFieldType[] = ['displayName'];
-
-    const options = new ContactFindOptions();
-    options.filter = "Mohy";
-    options.multiple = true;
-    options.hasPhoneNumber = true;
-
-    this.contacts.find(fields, options).then((contacts) => {
-      this.contactsfound = contacts;
-      alert(JSON.stringify(contacts[0]));
-    });
-
-    if (this.contactsfound.length == 0) {
-      this.contactsfound.push({displayName: 'No Contacts found'});
-    }
-
-  }
 }

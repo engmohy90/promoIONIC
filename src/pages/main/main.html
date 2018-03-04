@@ -17,19 +17,20 @@
   <button ion-button (click)="loadContacts()">Click To Load Contacts</button>
   <button ion-button (click)="findContacts()">Click To old Load Contacts</button>
   <ion-card>
-  <ion-card-header>
-    كوبون خصم
-  </ion-card-header>
-  <ion-card-content>
-<p class="mohy">من فضلك اختر احد الاصدقاء لديك وارسل له الكوبون</p>
-  </ion-card-content>
-</ion-card>
+    <ion-card-header>
+      كوبون خصم
+    </ion-card-header>
+    <ion-card-content>
+      <p class="mohy">من فضلك اختر احد الاصدقاء لديك وارسل له الكوبون</p>
+    </ion-card-content>
+  </ion-card>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="send(item)">
       {{ item.displayName }}
       {{ item.emails }}
       {{ item.phoneNumbers }}
+      {{ item | json }}
     </button>
   </ion-list>
 
