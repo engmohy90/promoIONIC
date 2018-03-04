@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>main</ion-title>
+    <ion-title>محمد</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,15 +15,31 @@
 
 <ion-content padding>
   <ion-card>
+    <div class="profile-pic">
+      <img src="../../assets/imgs/ProfilePic.jpg">
+    </div>
     <ion-card-content>
-      XXXXXXXXXXXXXXXXXX
+      XXXXXXXX
     </ion-card-content>
   </ion-card>
-  <h2>{{person.displayName}}</h2>
-  <p style="text-align: left" *ngFor="let phone of person.phoneNumbers">
-    {{phone.value}}
-  </p>
-  <p *ngFor="let email of person.emails">
-    {{email.value}}
-  </p>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="../assets/icon/whatsapp.png">
+      </ion-thumbnail>
+      <h2>010101010</h2>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="../assets/icon/sms.png">
+      </ion-thumbnail>
+      <h2>010101010</h2>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="../assets/icon/gmail.png">
+      </ion-thumbnail>
+      <h2>m@gmail.com</h2>
+    </ion-item>
+  </ion-list>
 </ion-content>

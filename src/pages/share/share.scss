@@ -1,3 +1,91 @@
 page-share {
+    ion-header {
+	 background: linear-gradient( rgba(11, 38, 83, 0.5)), url('../../assets/imgs/porsche-normal-share.png')  bottom center no-repeat;
+        background-size: cover;
+
+		ion-navbar{ 
+			
+			.toolbar-background-ios, .toolbar-background-md{
+			background: none !important;
+			}
+			
+			.toolbar-title-ios, .toolbar-title-md {
+				color: #fff;
+                text-align: center;
+			}
+
+            button.back-button{
+                color: #fff;
+            }
+		}
+
+		ion-card {
+			background: none !important;
+			box-shadow: none !important;
+			text-align: center;
+
+			ion-card-header {
+				color:  #fff !important;
+				font-size: 22px !important;
+			}
+
+			ion-card-content p {
+				color:  #fff !important;
+				font-size: 16px !important;
+			}
+		}
+
+		}
+
+    ion-content {
+
+        ion-card {
+            .profile-pic {
+                width: 250px;
+                margin-left: auto;
+                margin-right: auto;
+
+                img {
+                    width: 100%
+                }
+            }
+
+            ion-card-content {
+                text-align: center;
+                color: #0b2653;
+                font-size: 18px !important;
+            }
+        }
+
+        ion-list {
+
+            ion-item {
+                    border-top: none !important;
+                    border-bottom: 1px solid #d0d3d4 !important;
+                    padding-left: 0px !important;
+                    margin-top: 2px !important;
+
+                    ion-thumbnail {
+                        min-width: 40px !important;
+                        min-height: 40px !important;
+
+                        img {
+                            width: 40px !important;
+                            height: 40px !important;
+                        }
+                    }
+
+                    .item-inner {
+                        border-bottom: none !important;
+
+                        .input-wrapper{
+                        border: none !important;
+                        }
+                    }
+                }
+
+        }
+
+    }
 
 }

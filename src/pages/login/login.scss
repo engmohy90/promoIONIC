@@ -26,15 +26,20 @@ page-login {
             width: 100%;
             margin-top: 80px;
 
-            .list-ios[inset] {
+            .list-ios[inset],.list-md[inset] {
                 margin: 0px !important;
 
                 .item {
-                    border-bottom: 1px solid #fff;
+                    border-bottom: 1px solid #fff !important;
                     background: none !important;
                     color: #fff;
                     font-size: 20px;
                     text-align: center;
+
+                    .item-inner {
+                        border-bottom: none !important;
+                        box-shadow: none !important;
+                    }
 
                     ::placeholder {
                         text-align: center !important;

@@ -9,28 +9,27 @@
   <ion-navbar>
     <ion-title>main</ion-title>
   </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
   <ion-card>
     <ion-card-header>
       كوبون خصم
     </ion-card-header>
     <ion-card-content>
       <p class="mohy">من فضلك اختر احد الاصدقاء لديك وارسل له الكوبون</p>
-      <p *ngIf="items.length>0">{{items[0].displayName}}</p>
     </ion-card-content>
   </ion-card>
+</ion-header>
+
+
+<ion-content padding>
+
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let item of filteredContacts" (click)="send(item)">
-      {{ item.displayName }}
+    <button ion-item *ngFor="let item of items" (click)="send(item)">
+      <img src="../../assets/imgs/ProfilePic.jpg">
+      <h2>{{ item }}</h2>
+      <p>0101010101</p>
     </button>
   </ion-list>
-
-
 
 
 </ion-content>
