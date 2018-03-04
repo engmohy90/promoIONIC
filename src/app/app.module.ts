@@ -10,6 +10,9 @@ import {MainPage} from "../pages/main/main";
 import {SharePage} from "../pages/share/share";
 import { IonicStorageModule } from '@ionic/storage';
 import { Contacts} from '@ionic-native/contacts';
+import { AuthProvider } from '../providers/auth/auth';
+import {HttpClientModule} from "@angular/common/http";
+import { ContactsProvider } from '../providers/contacts/contacts';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { Contacts} from '@ionic-native/contacts';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
      IonicStorageModule.forRoot({
       name: '__mydb',
@@ -37,7 +41,9 @@ import { Contacts} from '@ionic-native/contacts';
     StatusBar,
     Contacts,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider,
+    ContactsProvider
   ]
 })
 export class AppModule {}

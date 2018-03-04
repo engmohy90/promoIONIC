@@ -1,3 +1,4 @@
+import { ContactsProvider } from './../../providers/contacts/contacts';
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {SharePage} from "../share/share";
@@ -19,19 +20,13 @@ export class MainPage {
   items=[]; // all contacts
   filteredContacts=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private contacts: Contacts, public loadingCtrl: LoadingController,) {
-    this.initializeItems();
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+      private contacts: Contacts,
+       public loadingCtrl: LoadingController,
+      public _contacts:ContactsProvider) {
+        this.items = this._contacts.getcontacts()
   }
-
-  initializeItems() {
-    // alert('initialze Items');
-    this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {filter: "", multiple: true,hasPhoneNumber:true}).then((contacts) => {
-      this.items = contacts;
-    }, err => {
-      alert(err);
-    });
-  }
-
 
   getItems(ev: any) {
     // Reset items back to all of the items
@@ -39,13 +34,10 @@ export class MainPage {
     // set val to the value of the searchbar
     let val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
 
-      // alert('before: '+this.filteredContacts);
       this.filteredContacts = this.items.filter((item) => {
-        // alert('item: '+item.toString());
-        // alert('name: ' + item.displayName);
+
         let contactName = item.displayName;
         if(contactName && contactName!=''){
           return contactName.toLowerCase().indexOf(val.trim().toLowerCase()) !== -1

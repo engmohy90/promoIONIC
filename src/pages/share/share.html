@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>محمد</ion-title>
+    <ion-title>{{person.displayName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,23 +23,33 @@
     </ion-card-content>
   </ion-card>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor= 'let phone of person.phoneNumbers'> 
       <ion-thumbnail item-start>
         <img src="../assets/icon/whatsapp.png">
       </ion-thumbnail>
-      <h2>010101010</h2>
+      <h2>{{phone.value}}</h2>
     </ion-item>
-    <ion-item>
+    <ion-item *ngFor= 'let phone of person.phoneNumbers'>
       <ion-thumbnail item-start>
         <img src="../assets/icon/sms.png">
       </ion-thumbnail>
-      <h2>010101010</h2>
+      <h2>{{phone.value}}</h2>
     </ion-item>
-    <ion-item>
+     <!-- test -->
+    <ion-item *ngFor= 'let phone of person.phoneNumbers'>
+      <ion-thumbnail item-start>
+        <img src="../assets/icon/sms.png">
+      </ion-thumbnail>
+      <ion-thumbnail item-start>
+        <img src="../assets/icon/whatsapp.png">
+      </ion-thumbnail>
+      <h2>{{phone.value}}</h2>
+    </ion-item>
+    <ion-item *ngFor= 'let email of person.emails'>
       <ion-thumbnail item-start>
         <img src="../assets/icon/gmail.png">
       </ion-thumbnail>
-      <h2>m@gmail.com</h2>
+      <h2>{{email.value}}</h2>
     </ion-item>
   </ion-list>
 </ion-content>
