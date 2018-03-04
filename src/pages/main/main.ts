@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {SharePage} from "../share/share";
-import {ContactFieldType, ContactFindOptions, Contacts} from '@ionic-native/contacts';
+import {Contacts} from '@ionic-native/contacts';
 
 /**
  * Generated class for the MainPage page.
@@ -16,75 +16,55 @@ import {ContactFieldType, ContactFindOptions, Contacts} from '@ionic-native/cont
 })
 export class MainPage {
   searchQuery: string = '';
-  items: any[];
-  contactsfound = [];
+  items=[]; // all contacts
+  filteredContacts=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contacts: Contacts, public loadingCtrl: LoadingController,) {
-    // this.initializeItems();
-  }
-
-  ionViewWillEnter(){
     this.initializeItems();
   }
 
   initializeItems() {
-    let fields: ContactFieldType[] = ['displayName'];
-
-    const options = new ContactFindOptions();
-    options.filter = "";
-    options.multiple = true;
-    options.hasPhoneNumber = true;
-
-    this.contacts.find(fields, options).then((contacts) => {
+    // alert('initialze Items');
+    this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {filter: "", multiple: true,hasPhoneNumber:true}).then((contacts) => {
       this.items = contacts;
-      alert(JSON.stringify(contacts[0]));
+    }, err => {
+      alert(err);
     });
   }
 
-  findContacts(ev: any) {
-    let fields: ContactFieldType[] = ['displayName'];
-
-    const options = new ContactFindOptions();
-    options.filter = "Mohy";
-    options.multiple = true;
-    options.hasPhoneNumber = true;
-
-    this.contacts.find(fields, options).then((contacts) => {
-      this.contactsfound = contacts;
-      alert(JSON.stringify(contacts[0]));
-    });
-
-    if (this.contactsfound.length == 0) {
-      this.contactsfound.push({displayName: 'No Contacts found'});
-    }
-
-  }
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
-
+    // this.initializeItems();
     // set val to the value of the searchbar
     let val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.displayName.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+
+      // alert('before: '+this.filteredContacts);
+      this.filteredContacts = this.items.filter((item) => {
+        // alert('item: '+item.toString());
+        // alert('name: ' + item.displayName);
+        let contactName = item.displayName;
+        if(contactName && contactName!=''){
+          return contactName.toLowerCase().indexOf(val.trim().toLowerCase()) !== -1
+        }else{
+          return false;
+        }
+      });
+      alert('after: '+this.filteredContacts);
     }
   }
 
   send(item) {
-    this.navCtrl.push(SharePage, {}, {
+    this.navCtrl.push(SharePage, {person:item}, {
       animate: true,
       direction: 'forward'
     });
 
   }
 
-  loadContacts() {
-    this.initializeItems();
-  }
+
 
 }

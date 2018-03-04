@@ -13,8 +13,9 @@ import {NavController, NavParams} from 'ionic-angular';
   templateUrl: 'share.html',
 })
 export class SharePage {
-
+  person:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.person = this.navParams.get('person');
   }
 
   ionViewDidLoad() {

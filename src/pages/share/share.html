@@ -19,12 +19,11 @@
       XXXXXXXXXXXXXXXXXX
     </ion-card-content>
   </ion-card>
-  <ion-list>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../assets/whatsapp.png">
-      </ion-thumbnail>
-      <h2>محمد</h2>
-    </ion-item>
-  </ion-list>
+  <h2>{{person.displayName}}</h2>
+  <p style="text-align: left" *ngFor="let phone of person.phoneNumbers">
+    {{phone.value}}
+  </p>
+  <p *ngFor="let email of person.emails">
+    {{email.value}}
+  </p>
 </ion-content>
