@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import {MainPage} from "../pages/main/main";
 import {SharePage} from "../pages/share/share";
 import { IonicStorageModule } from '@ionic/storage';
+import { Contacts} from '@ionic-native/contacts';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   providers: [
     StatusBar,
+    Contacts,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

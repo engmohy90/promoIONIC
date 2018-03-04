@@ -39,7 +39,14 @@ export class LoginPage implements OnInit {
       }
     });
     if (this.registerCredentials.username == "mohy" && this.registerCredentials.password == "mohy") {
-      this.registerCredentials.username == "mohy"
+      this.registerCredentials.username == "mohy";
+      this.storage.set('auth', 'yes');
+      this.storage.get('auth').then((val) => {
+        if (val == 'yes') {
+          alert(val);
+        }
+      });
+
       this.navCtrl.setRoot(MainPage, {}, {
         animate: true,
         direction: 'forward'

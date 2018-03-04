@@ -25,7 +25,9 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="send(item)">
-      {{ item }}
+      {{ item.displayName }}
+      {{ item.emails }}
+      {{ item.phoneNumbers }}
     </button>
   </ion-list>
 
