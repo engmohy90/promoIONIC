@@ -1,8 +1,9 @@
-import { ContactsProvider } from './../../providers/contacts/contacts';
+import {ContactsProvider} from './../../providers/contacts/contacts';
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {SharePage} from "../share/share";
 import {Contacts} from '@ionic-native/contacts';
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the MainPage page.
@@ -17,15 +18,16 @@ import {Contacts} from '@ionic-native/contacts';
 })
 export class MainPage {
   searchQuery: string = '';
-  items=[]; // all contacts
-  filteredContacts=[];
+  items = []; // all contacts
+  filteredContacts = [];
 
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-      private contacts: Contacts,
-       public loadingCtrl: LoadingController,
-      public _contacts:ContactsProvider) {
-        this.items = this._contacts.getcontacts()
+              public navParams: NavParams,
+              private contacts: Contacts,
+              public loadingCtrl: LoadingController,
+              public _contacts: ContactsProvider,
+              private storage: Storage) {
+    this.items = this._contacts.getcontacts()
   }
 
   getItems(ev: any) {
@@ -39,24 +41,41 @@ export class MainPage {
       this.filteredContacts = this.items.filter((item) => {
 
         let contactName = item.displayName;
-        if(contactName && contactName!=''){
+        if (contactName && contactName != '') {
           return contactName.toLowerCase().indexOf(val.trim().toLowerCase()) !== -1
-        }else{
+        } else {
           return false;
         }
       });
-      alert('after: '+this.filteredContacts);
+      alert('after: ' + this.filteredContacts);
     }
   }
 
   send(item) {
-    this.navCtrl.push(SharePage, {person:item}, {
+    this.navCtrl.push(SharePage, {person: item}, {
       animate: true,
       direction: 'forward'
     });
 
   }
 
+  chechme() {
+    alert("inside check me ===")
+    this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {
+      filter: "",
+      multiple: true,
+      hasPhoneNumber: true
+    }).then((mycontacts) => {
+      alert("contacts ===" + mycontacts)
+      this.storage.set('contacts', mycontacts);
+    })
 
+  }
 
+  loadme() {
+    this.storage.get('contacts').then(val => {
+      alert("vallllll ===" + val)
+
+    })
+  }
 }
