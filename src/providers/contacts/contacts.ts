@@ -16,7 +16,6 @@ export class ContactsProvider {
     console.log('Hello ContactsProvider Provider');
     this.getcontacts();
   }
-
   getcontacts(): any {
     this.storage.get('contacts').then(val => {
       alert("inside get from storage" + val)

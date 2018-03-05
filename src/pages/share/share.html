@@ -16,38 +16,38 @@
 <ion-content padding>
   <ion-card>
     <div class="profile-pic">
-      <img src="../../assets/imgs/ProfilePic.jpg">
+      <img src="imgs/ProfilePic.jpg">
     </div>
     <ion-card-content>
       XXXXXXXX
     </ion-card-content>
   </ion-card>
   <ion-list>
-    <ion-item *ngFor= 'let phone of person.phoneNumbers'> 
+    <ion-item *ngFor= 'let phone of person.phoneNumbers'>
       <ion-thumbnail item-start>
-        <img src="../assets/icon/whatsapp.png">
+        <img src="icon/whatsapp.png">
       </ion-thumbnail>
       <h2>{{phone.value}}</h2>
     </ion-item>
     <ion-item *ngFor= 'let phone of person.phoneNumbers'>
       <ion-thumbnail item-start>
-        <img src="../assets/icon/sms.png">
+        <img src="icon/sms.png">
       </ion-thumbnail>
       <h2>{{phone.value}}</h2>
     </ion-item>
      <!-- test -->
     <ion-item *ngFor= 'let phone of person.phoneNumbers'>
       <ion-thumbnail item-start>
-        <img src="../assets/icon/sms.png">
+        <img src="icon/sms.png">
       </ion-thumbnail>
       <ion-thumbnail item-start>
-        <img src="../assets/icon/whatsapp.png">
+        <img src="icon/whatsapp.png">
       </ion-thumbnail>
       <h2>{{phone.value}}</h2>
     </ion-item>
     <ion-item *ngFor= 'let email of person.emails'>
       <ion-thumbnail item-start>
-        <img src="../assets/icon/gmail.png">
+        <img src="icon/gmail.png">
       </ion-thumbnail>
       <h2>{{email.value}}</h2>
     </ion-item>

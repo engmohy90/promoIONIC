@@ -25,7 +25,7 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="send(item)">
-      <img src="../../assets/imgs/ProfilePic.jpg">
+      <img src="imgs/ProfilePic.jpg">
       <h2>{{ item.displayName }}</h2>
       <p *ngFor= 'let phone of item.phoneNumbers'>{{phone.value}}</p>
     </button>
