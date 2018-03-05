@@ -21,6 +21,7 @@ export class ContactsProvider {
     let result = []
     this.storage.get('contacts').then(val => {
       if (val == null) {
+        alert("inside if null ===" + val)
         this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {
           filter: "",
           multiple: true,
@@ -28,14 +29,16 @@ export class ContactsProvider {
         }).then((contacts) => {
 
           this.storage.set('contacts', contacts);
+          alert("contacts ===" + contacts)
           result = contacts;
         }, err => {
           return (err);
         });
       } else {
         result = val;
+        alert("contacts vall else ===" + val)
       }
-      alert("contacts ===" + result)
+
       return result
     })
 
