@@ -61,7 +61,7 @@ export class MainPage {
 
   chechme() {
     alert("inside check me ===")
-    this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {
+    this.contacts.find(['displayName'], {
       filter: "",
       multiple: true,
       hasPhoneNumber: true
