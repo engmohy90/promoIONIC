@@ -30,7 +30,7 @@
       <p *ngFor='let phone of item.phoneNumbers'>{{ phone.value }}</p>
     </button>
   </ion-list>
-
+  <input name="mohy" type="text" [ngModel]="text">
   <button ion-button (click)="chechme()"> chechme</button>
   <button ion-button (click)="loadme()"> load from storage</button>
 </ion-content>

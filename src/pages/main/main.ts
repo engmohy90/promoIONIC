@@ -20,6 +20,7 @@ export class MainPage {
   searchQuery: string = '';
   items = []; // all contacts
   filteredContacts = [];
+  text = '';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -60,9 +61,9 @@ export class MainPage {
   }
 
   chechme() {
-    alert("inside check me ===")
+    alert("inside check me ==="+this.text)
     this.contacts.find(['displayName'], {
-      filter: "",
+      filter: this.text,
       multiple: true,
       hasPhoneNumber: true
     }).then((mycontacts) => {
