@@ -16,24 +16,29 @@ export class ContactsProvider {
     console.log('Hello ContactsProvider Provider');
     this.getcontacts();
   }
-  getcontacts(): any {
-    this.storage.get('contacts').then(val => {
-      alert("inside get from storage" + val)
-      return val
-    })
-    // alert('initialze Items');
-    this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {
-      filter: "",
-      multiple: true,
-      hasPhoneNumber: true
-    }).then((contacts) => {
-      alert("contacts ===" + contacts)
 
-      this.storage.set('contacts', contacts);
-      return contacts
-    }, err => {
-      return (err);
-    });
+  getcontacts(): any {
+    let result = []
+    this.storage.get('contacts').then(val => {
+      if (val == null) {
+        this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], {
+          filter: "",
+          multiple: true,
+          hasPhoneNumber: true
+        }).then((contacts) => {
+
+          this.storage.set('contacts', contacts);
+          result = contacts;
+        }, err => {
+          return (err);
+        });
+      } else {
+        result = val;
+      }
+      alert("contacts ===" + result)
+      return result
+    })
+
   }
 
 }
