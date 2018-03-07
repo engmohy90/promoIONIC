@@ -59,24 +59,4 @@ export class MainPage {
     });
 
   }
-
-  chechme() {
-    alert("inside check me ==="+this.text)
-    this.contacts.find(['displayName'], {
-      filter: this.text,
-      multiple: true,
-      hasPhoneNumber: true
-    }).then((mycontacts) => {
-      alert("contacts ===" + mycontacts)
-      this.storage.set('contacts', mycontacts);
-    })
-
-  }
-
-  loadme() {
-    this.storage.get('contacts').then(val => {
-      alert("vallllll ===" + val)
-
-    })
-  }
 }

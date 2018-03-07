@@ -5,6 +5,7 @@ import {MainPage} from "../main/main";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from "../../providers/auth/auth";
 import {User} from "../../models/user";
+import {TabsPage} from "../tabs/tabs";
 
 @Component({
   selector: 'page-login',
@@ -54,7 +55,7 @@ export class LoginPage implements OnInit {
       loading.dismiss()
       this.storage.set('user', this.registerCredentials);
       // this.storage.set('masterkey', data.key);
-      this.navCtrl.setRoot(MainPage, {}, {
+      this.navCtrl.setRoot('TabsPage', {}, {
         animate: true,
         direction: 'forward'
       });
