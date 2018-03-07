@@ -44,6 +44,12 @@ export class ContactsProvider {
     console.log('ContactsProvider Provider','getContacts');
     if(this.contactsList==null || this.contactsList.length ==0 ){
       this.loadContacts();
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Loading Please Wait...',
+        duration:3000
+      });
+      loading.present();
       return this.contactsList;
     }else{
       return this.contactsList;
