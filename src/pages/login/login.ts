@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {LoadingController, MenuController, NavController, ToastController} from 'ionic-angular';
+import {IonicPage, LoadingController, MenuController, NavController, ToastController} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
-import {MainPage} from "../main/main";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from "../../providers/auth/auth";
 import {User} from "../../models/user";
-import {TabsPage} from "../tabs/tabs";
 
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -36,7 +35,7 @@ export class LoginPage implements OnInit {
     // Or to get a key/value pair
     this.storage.get('user').then((user) => {
       if (user != null && user.username !== null) {
-        this.navCtrl.setRoot(MainPage, {}, {
+        this.navCtrl.setRoot('BrandsPage', {}, {
           animate: true,
           direction: 'forward'
         });
@@ -55,7 +54,7 @@ export class LoginPage implements OnInit {
       loading.dismiss()
       this.storage.set('user', this.registerCredentials);
       // this.storage.set('masterkey', data.key);
-      this.navCtrl.setRoot('TabsPage', {}, {
+      this.navCtrl.setRoot('BrandsPage', {}, {
         animate: true,
         direction: 'forward'
       });

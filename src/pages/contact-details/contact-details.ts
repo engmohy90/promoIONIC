@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SelectcontactPage page.
+ * Generated class for the ContactDetailsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-selectcontact',
-  templateUrl: 'selectcontact.html',
+  selector: 'page-contact-details',
+  templateUrl: 'contact-details.html',
 })
-export class SelectcontactPage {
-
+export class ContactDetailsPage {
+  person:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.person = this.navParams.get('person');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SelectcontactPage');
+    console.log('ionViewDidLoad ContactDetailsPage');
   }
 
 }

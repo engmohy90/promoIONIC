@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {SelectcontactPage} from "../selectcontact/selectcontact";
 
 /**
- * Generated class for the SendNewPage page.
+ * Generated class for the BrandsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +11,20 @@ import {SelectcontactPage} from "../selectcontact/selectcontact";
 @IonicPage()
 @Component({
   selector: 'page-send-new',
-  templateUrl: 'send-new.html',
+  templateUrl: 'brands.html',
 })
-export class SendNewPage {
+export class BrandsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SendNewPage');
+    console.log('ionViewDidLoad BrandsPage');
   }
 
   setBrand(brandName) {
 
-    this.navCtrl.push('SelectcontactPage', {brandName: brandName}, {
+    this.navCtrl.push('ContactsPage', {brandName: brandName}, {
       animate: true,
       direction: 'forward'
     });

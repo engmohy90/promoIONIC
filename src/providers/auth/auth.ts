@@ -19,7 +19,7 @@ export class AuthProvider {
   }
 
   getUser(user: User): Observable<User> {
-    if (user !== null && user.username == "mohy" && user.password == "mohy") {
+    if (user !== null && user.username.toLowerCase() == "mohy" && user.password.toLowerCase() == "mohy") {
 
       return Observable.of(user);// TODO : return the response
       // } else {

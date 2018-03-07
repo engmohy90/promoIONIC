@@ -5,9 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 
 import {MyApp} from './app.component';
-import {LoginPage} from '../pages/login/login';
-import {MainPage} from "../pages/main/main";
-import {SharePage} from "../pages/share/share";
 import {IonicStorageModule} from '@ionic/storage';
 import {Contacts} from '@ionic-native/contacts';
 import {AuthProvider} from '../providers/auth/auth';
@@ -19,10 +16,7 @@ import {ContactsProvider} from '../providers/contacts/contacts';
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    MainPage,
-    SharePage,
-    // TabsPage,
+
 
   ],
   imports: [
@@ -37,10 +31,6 @@ import {ContactsProvider} from '../providers/contacts/contacts';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    // TabsPage,
-    MainPage,
-    SharePage
   ],
   providers: [
     StatusBar,

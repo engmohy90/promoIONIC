@@ -1,0 +1,94 @@
+page-contacts {
+
+  ion-header {
+    background: linear-gradient( rgba(11, 38, 83, 0.5)), url('../../assets/imgs/porsche-normal.jpg')  bottom center no-repeat;
+    background-size: cover;
+
+    ion-navbar{
+
+      .toolbar-background-ios,.toolbar-background{
+        background: none !important;
+      }
+
+      .toolbar-title-ios,.toolbar-title-md {
+        color: #fff;
+      }
+
+      .toolbar-title-md {
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+      }
+    }
+
+    ion-card {
+      background: none !important;
+      box-shadow: none !important;
+      text-align: center;
+
+      ion-card-header {
+        color:  #fff !important;
+        font-size: 22px !important;
+      }
+
+      ion-card-content p {
+        color:  #fff !important;
+        font-size: 16px !important;
+      }
+    }
+
+  }
+
+  ion-content{
+
+    .scroll-content {
+
+      ion-searchbar {
+        background: none !important;
+        border: none !important;
+        box-shadow: 0px 0px 5px #0b2653;
+        padding: 0px !important;
+
+        .searchbar-input {
+          background: none !important;
+          box-shadow: none !important;
+        }
+      }
+
+      ion-list {
+        margin: 11px 0 32px !important;
+
+
+        .item-block:first-child {
+          border-top: none !important;
+        }
+
+        .item-ios, .item-md {
+          width: 100%;
+          border: none !important;
+          padding: 2px !important;
+
+          .item-inner {
+            /* border: none;
+                          border-bottom: 1px solid #0b2653; */
+
+            .label-ios,.label-md {
+              margin: 11px 8px 11px 14px;
+              color: #086684;
+
+              img{
+                width: 47px;
+                float: left;
+                margin-right: 12px;
+              }
+
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+
