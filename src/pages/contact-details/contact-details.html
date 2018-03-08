@@ -14,5 +14,36 @@
 
 
 <ion-content padding>
-{{person.displayName}}
+  <form (ngSubmit)="saveDetails()" #registerForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input type="text" placeholder='اﻻسم اﻻول' name="fristname" [(ngModel)]="registerCredentials.fristname"
+                       required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder='اﻻسم الثانى' name="lastname"
+                       [(ngModel)]="registerCredentials.lastname"
+                       required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" placeholder='رقم الجوال' name="phone" [(ngModel)]="registerCredentials.phone"
+                       required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder='البريد اﻻلكترونى' name="email"
+                       [(ngModel)]="registerCredentials.email"
+                       required></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">اﻻستمرار</button>
+      </ion-col>
+    </ion-row>
+  </form>
+
 </ion-content>

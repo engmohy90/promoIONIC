@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {SharePage} from "../share/share";
+import {NgForm} from "@angular/forms";
 
 /**
  * Generated class for the ContactDetailsPage page.
@@ -14,13 +16,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contact-details.html',
 })
 export class ContactDetailsPage {
-  person:any;
+
+  registerCredentials = {
+    phone: "",
+    email: "",
+    fristname: "",
+    lastname: ""
+  }
+  person: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.person = this.navParams.get('person');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactDetailsPage');
+  }
+
+  saveDetails(form: NgForm) {
+    this.navCtrl.push('SharePage', {person: this.registerCredentials}, {
+      animate: true,
+      direction: 'forward'
+    });
+
   }
 
 }

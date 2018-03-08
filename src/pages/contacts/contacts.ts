@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ContactsProvider} from "../../providers/contacts/contacts";
 
@@ -21,8 +21,7 @@ export class ContactsPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              public _contacts: ContactsProvider,
-              ) {
+              public _contacts: ContactsProvider,) {
   }
 
   ionViewDidLoad() {
@@ -35,17 +34,17 @@ export class ContactsPage {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Loading Please Wait...',
-      duration:3000
+      duration: 3000
     });
     loading.present();
   }
 
   filterContacts(ev: any) {
-    if(this.items==null || this.items.length==0){
-      console.log('filterContacts','No Items To Filter');
+    if (this.items == null || this.items.length == 0) {
+      console.log('filterContacts', 'No Items To Filter');
       this.items = this._contacts.getContacts();
-    }else{
-      console.log('filterContacts items: ',this.items);
+    } else {
+      console.log('filterContacts items: ', this.items);
     }
     // Reset items back to all of the items
     // this.initializeItems();
@@ -62,12 +61,12 @@ export class ContactsPage {
           return false;
         }
       });
-      console.log('filterContacts',this.filteredContacts);
+      console.log('filterContacts', this.filteredContacts);
     }
   }
 
   selectContact(item) {
-    this.navCtrl.push('SharePage', {person: item}, {
+    this.navCtrl.push('ContactDetailsPage', {person: item}, {
       animate: true,
       direction: 'forward'
     });
